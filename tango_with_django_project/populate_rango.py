@@ -24,7 +24,7 @@ def populate():
     other_pages = [{'title':'Bottle',
                     'url':'http://bottlepy.org/docs/dev/', 'views': 128},
                    {'title':'Flask',
-                    'url':'http://flask.pocoo.org', 'views': 128} ]
+                    'url':'http://flask.pocoo.org', 'views': 128 }]
     cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
             'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
             'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16} }
@@ -35,7 +35,7 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['views'], cat_data['likes'])  # pass views and likes here
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            add_page(c, p['title'], p['url'], p['views'])
     # Print out the categories we have added.
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
