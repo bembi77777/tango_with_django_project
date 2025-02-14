@@ -7,45 +7,17 @@
 
 {% block body_block %}
 <h1>Register for Rango</h1>
-
 {% if registered %}
-    <h2>Rango says: <strong>thank you for registering!</strong></h2>
-    <a href="/rango/">Return to the homepage.</a>
+Rango says: <strong>thank you for registering!</strong>
+<a href="{% url 'rango:index' %}">Return to the homepage.</a><br />
 {% else %}
-    {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <p>{{ message|safe }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
+Rango says: <strong>register here!</strong><br />
+<form id="user_form" method="post" action="{% url 'rango:register' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
 
-    <h2>Rango says: <strong>register here!</strong></h2>
-
-    <form method="post" enctype="multipart/form-data" action="/rango/register/">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <!-- Updated submit button -->
-        <input type="submit" name="submit" value="Register" />
-    </form>
-{% endif %}
-
-{% if user_form.errors or profile_form.errors %}
-    <ul class="errorlist">
-        {% for field in user_form %}
-            {% for error in field.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        {% endfor %}
-        {% for error in user_form.non_field_errors %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        {% for field in profile_form %}
-            {% for error in field.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        {% endfor %}
-    </ul>
+    <input type="submit" name="submit" value="Register" />
+</form>
 {% endif %}
 {% endblock %}

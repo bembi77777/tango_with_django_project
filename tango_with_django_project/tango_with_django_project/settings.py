@@ -30,7 +30,7 @@ SECRET_KEY = 'k*#5%w-m$t(h)27h4i+#bm8^uuclur2)2d!4l)deq-2)4hda_2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+LOGIN_URL = 'rango:login'
 ALLOWED_HOSTS = []
 
 
