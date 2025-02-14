@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rango - {% block title_block %}How to Tango with Django!{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Welcome to Rango{% endblock %}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'rango:index' %}">Home</a></li>
+                <li><a href="{% url 'rango:about' %}">About</a></li>
+                <li><a href="{% url 'rango:add_category' %}">Add Category</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <aside>
+            <h3>Sidebar Content</h3>
+            <ul>
+                <li><a href="#">Sidebar Link 1</a></li>
+                <li><a href="#">Sidebar Link 2</a></li>
+                <li><a href="#">Sidebar Link 3</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <hr />
+        <ul>
+            <li><a href="{% url 'rango:add_category' %}">Add a New Category</a></li>
+            <li><a href="{% url 'rango:about' %}">About</a></li>
+            <li><a href="{% url 'rango:index' %}">Index</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

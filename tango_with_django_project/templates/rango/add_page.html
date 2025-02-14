@@ -1,0 +1,17 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+{% block title_block %}
+Add a Page
+{% endblock %}
+{% block content %}
+  <h1>Add a Page to {{ category.name }}</h1>
+
+  <form method="post" action="{% url 'rango:add_page' category.slug %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save Page</button>
+  </form>
+
+  <br/>
+  <a href="/rango/category/{{ category.slug }}/">Back to Category</a>
+{% endblock %}
